@@ -1,2 +1,5 @@
 # Specify filepatterns you want git to ignore.
 **/WinterSchool/00_WiP
+
+# Specify extension file you want git to ignore.
+*.asv

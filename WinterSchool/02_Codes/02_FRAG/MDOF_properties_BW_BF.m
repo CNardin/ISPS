@@ -17,11 +17,11 @@ Mat.M(5,5)=1*2.55*10^6;
 %% Stiffness matrix  
 ke=2.8*10^8;        % elementary stiffness 
 Mat.ke=ke;          % stiffness matrix 
-ks(1,1)=0.2*4.3790*10^6;%[kN/m]
-ks(2,2)=0.2*4.0675*10^6;
-ks(3,3)=0.2*3.9560*10^6;
-ks(4,4)=0.2*3.9150*10^5;
-ks(5,5)=0.2*3.9575*10^5;
+ks(1,1)=1*4.3790*10^7;%[kN/m]
+ks(2,2)=1*4.0675*10^7;
+ks(3,3)=0.9*3.9560*10^7;
+ks(4,4)=0.7*3.9150*10^7;
+ks(5,5)=0.5*3.9575*10^7;
 Mat.ke=Mat.Af'*ks*Mat.Af;
 
 %% Damping matrix 
@@ -43,7 +43,7 @@ FF=1./TT;           % structural frquency
 %% Material Parameters  
 alphaaa=.01;         % Post yielding stiffness 
 %threshold=0.12;
-uy=0.04;            % yielding point
+uy=0.01;            % yielding point
 
 %% Define Parameters of Newmark scheme 
 Mat.gammaN=1/2;

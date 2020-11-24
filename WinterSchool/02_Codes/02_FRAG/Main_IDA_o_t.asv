@@ -230,55 +230,10 @@ eq_over = sum(IM_t_c >= IM_max);    % number of analyses reached IM_max without 
 [mu_IDA_t, sigma_IDA_t ] = truncated_ida(IM_trunc, IM_max, eq_over);
 
 string2save = strcat('LS',num2str(ls_i),'.mat');
-save(string2save,'mu_IDA_t','sigma_IDA_t','mu_IDA','sigma_ID','IM_t_c','IM_trunc','IM_max','eq_over',...
+save(string2save,'mu_IDA_t','sigma_IDA_t','mu_IDA','sigma_IDA','IM_t_c','IM_trunc','IM_max','eq_over',...
                  'IM_t','EDP_gm','SCALE_gm','PGA_gm')
              
-return             
-%% Plot fragility curves for every identified limit state
-Par=[theta_mle_DS1, beta_mle_DS1;
-  theta_mle_DS2, beta_mle_DS2;
-  theta_mle_DS3, beta_mle_DS3;
-  theta_mle_DS4, beta_mle_DS4;
-  theta_mle_DS5, beta_mle_DS5];
-%save('Ductile_par','Par')
-
-%% compute fragility functions using estimated parameters
-x_vals = 0:0.01:4; % IM levels to plot fragility function 
-
-p_mle_DS1 = normcdf((log(x_vals/theta_mle_DS1))/beta_mle_DS1);
-p_mle_DS2 = normcdf((log(x_vals/theta_mle_DS2))/beta_mle_DS2); 
-p_mle_DS3 = normcdf((log(x_vals/theta_mle_DS3))/beta_mle_DS3); 
-p_mle_DS4 = normcdf((log(x_vals/theta_mle_DS4))/beta_mle_DS4); 
-p_mle_DS5 = normcdf((log(x_vals/theta_mle_DS5))/beta_mle_DS5); 
-
-
-figure('OuterPosition',[100 100 1100 450]);
-plot(x_vals,p_mle_DS1, '-', 'linewidth', 2, 'color', [0    0.4470    0.7410])
-hold on 
-plot(x_vals,p_mle_DS2, '-', 'linewidth', 2)
-hold on 
-plot(x_vals,p_mle_DS3, '.-', 'linewidth', 2)
-hold on 
-plot(x_vals,p_mle_DS4, '-', 'linewidth', 2)
-hold on 
-plot(x_vals,p_mle_DS5, '-', 'linewidth', 2)
-xlim([0 4])
-title('Fragility Curves','Interpreter','Latex')
-set(gca,'fontname','Times')
-ylabel('$P(DS>ds|pga)$','Interpreter', 'latex')
-xlabel('$pga [g]$','Interpreter', 'latex')
-hhh=legend('$DS1$','$DS2$','$DS3$','$DS4$','$DS_c$');
-set(hhh,'Interpreter','Latex');
-set(hhh,'Location','SouthEast')
-set(hhh,'FontSize',18)
-title('ii)','Interpreter','Latex')
-grid on
-legend boxoff
-grid on
-tightfig;
-
-
-
+          
 
 
 

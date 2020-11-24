@@ -134,12 +134,17 @@ for ls_i=1:numel(LS)
 
 end
 
+% Par=[theta_mle_DS1, beta_mle_DS1;
+%   theta_mle_DS2, beta_mle_DS2;
+%   theta_mle_DS3, beta_mle_DS3;
+%   theta_mle_DS4, beta_mle_DS4;
+%   theta_mle_DS5, beta_mle_DS5];
+%save('MRF_par','Par')
 Par=[theta_mle_DS1, beta_mle_DS1;
   theta_mle_DS2, beta_mle_DS2;
   theta_mle_DS3, beta_mle_DS3;
-  theta_mle_DS4, beta_mle_DS4;
-  theta_mle_DS5, beta_mle_DS5];
-%save('Ductile_par','Par')
+  theta_mle_DS4, beta_mle_DS4];
+%save('BF_par','Par')
 
 %% compute fragility functions using estimated parameters
 xlim_sup=4;
@@ -149,7 +154,7 @@ p_mle_DS1 = normcdf((log(x_vals/theta_mle_DS1))/beta_mle_DS1);
 p_mle_DS2 = normcdf((log(x_vals/theta_mle_DS2))/beta_mle_DS2); 
 p_mle_DS3 = normcdf((log(x_vals/theta_mle_DS3))/beta_mle_DS3); 
 p_mle_DS4 = normcdf((log(x_vals/theta_mle_DS4))/beta_mle_DS4); 
-p_mle_DS5 = normcdf((log(x_vals/theta_mle_DS5))/beta_mle_DS5); 
+% p_mle_DS5 = normcdf((log(x_vals/theta_mle_DS5))/beta_mle_DS5); 
 
 
 figure('OuterPosition',[100 100 1100 450]);
@@ -161,7 +166,7 @@ plot(x_vals,p_mle_DS3, '.-', 'linewidth', 2)
 hold on 
 plot(x_vals,p_mle_DS4, '-', 'linewidth', 2)
 hold on 
-plot(x_vals,p_mle_DS5, '-', 'linewidth', 2)
+% plot(x_vals,p_mle_DS5, '-', 'linewidth', 2)
 xlim([0 xlim_sup])
 title('Fragility Curves','Interpreter','Latex')
 set(gca,'fontname','Times')

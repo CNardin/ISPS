@@ -82,7 +82,7 @@ for nn =1: numel(NN)
     plot(EDP,SCALE);
     hold on
     clear EDP SCALE 
-    s_plotQvsID
+%     s_plotQvsID
     
 end  
 

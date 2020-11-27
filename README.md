@@ -1,5 +1,7 @@
-*Lectures and Tutorials on PSHA - Unitn*
+*Lectures and Tutorials for the Earthquake Engineering and Seismic Design course of Unitn*
+*and INSPIRE Winter School Tn 2020*
 
-* Clone repository or download .zip file
-* Change path into line 10 of MAIN. matlab file
+* Fork repository or download .zip file
 * Run the codes!
+
+For any doubts or problems, please do not hesitate to contact me.

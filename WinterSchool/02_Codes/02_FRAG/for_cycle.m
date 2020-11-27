@@ -114,7 +114,7 @@ LS = [0.30 0.50 1 2]*4/100; %BF
 for ls_i = 1:numel(LS)
 ls_val = LS(ls_i)
 
-Main_IDA_o_t
+structuralAnalysis
 
 ls_i = ls_i + 1;
 end

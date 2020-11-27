@@ -13,7 +13,7 @@
 %=============================== MAIN =====================================
 %% ------------------------------------------------------------------------
 %______________: PROBABILISTIC SEISMIC HAZARD ANALYSIS :___________________
-%% ------------------------------------------------------------------------
+%% ----------------------- General Settings -----------------------------%%
 close all
 clear all
 clc
@@ -29,7 +29,7 @@ zs9dir = fullfile(maindir,'\Italia');
 imagesdir = fullfile(maindir,'\images');
 cd(maindir)
 
-%% ----------- I. Earthquake source characterization ------------------- %%
+%% ----------- Data acquisition from INGV catalogue -------------------- %%
 prompt = 'Has source characterization already been evaluted? Type Y/N [Y]: ';
 flag_choose = input(prompt,'s');
 if isempty(flag_choose)
@@ -72,7 +72,7 @@ end
 cd(zs9dir)
 mappa
 
-%% ----------- (N.B.): Global definitions            ------------------- %%
+%% ----------- Initialization - Global definitions   ------------------- %%
 %% a. Nfault - defining faults characteristics
 % Select the number of faults involved in calculations
 flag_choose = 1;
@@ -85,7 +85,7 @@ if flag_choose ~= numel(IDS)
 end
 
 N_faults = numel(flag_choose);
-% Magnitude distribution parameters
+%% b. Magnitude distribution parameters
 for nof = 1:N_faults
     %Fault 1
     M_min = dati(nof,3);
@@ -98,12 +98,11 @@ for nof = 1:N_faults
     M_step = (M_max-M_min)/1000;   %0.00161 - 0.0023
     mag = M_min:M_step:(M_max-M_step);
 end
-%% b. IM - definition
+%% c. IM - definition
 INT_step = 0.01; INT_start = 0.01; INT_end = 1.51;
 INT=(INT_start:INT_step:(INT_end-INT_step)); % Discretization of intensity measure PGA in [g]
 imeasure = INT(1):INT_step:INT(end);
-
-%% c. R - definition
+%% d. R - definition
 flag_plot = 0;  % 1 =y , 0 = n
 % Set up the grid coordinate and discretization
 Rmax = 0.51;    % 50km
@@ -148,7 +147,7 @@ if flag_plot ==1
     sgtitle('Mapping','fontsize',20)
 end
 
-%% ----------- Integral of Hazard                     ------------------ %%
+%% ----------- Computation of Integral Hazard         ------------------ %%
 % initialization of cell array
 cont_plot = 1; flag_plot = 1; % 1 =y , 0 = n
 P_i = 0;

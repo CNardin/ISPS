@@ -35,6 +35,8 @@ for nn =1: numel(NN)
           [HistVarBw]=ResponceMDF_Bw(Mat); 
           edp = max(abs(HistVarBw.eps(1,:)));
 
+          EDP(i) = edp; %#ok<SAGROW> store the EDP fpr each time histroy analysis 
+          SCALE(i) = scale; %#ok<SAGROW> strore the scale factor for each time history analysis
           disp('EDP')
           disp(edp)
           disp(' ')
@@ -46,6 +48,9 @@ for nn =1: numel(NN)
     Numb(nn) = i
     disp('scale'); disp(scale);
 
+    EDP_gm{nn} = EDP; %#ok<SAGROW> store the all seqeunce of edp
+    SCALE_gm{nn} = SCALE; %#ok<SAGROW> store the all scale of EDP
+    PGA_gm{nn} = max(abs(a_g)); %#ok<SAGROW> store the all scale of EDP     
     figure(999)
     plot(EDP,SCALE);
     hold on
@@ -80,11 +85,13 @@ isd_I(i)=max(abs(HistVarBw.eps(1,:)));
 IM_t_c = sort(IM_t);
 
 
+%% Untruncated IDA
 [parmhat,parmci] = lognfit(IM_t_c ,0.01);
 mu_IDA = parmhat(1);
 sigma_IDA = parmhat(2);
 
 
+%% 
 IM_max = 2.2;
 IM_trunc = IM_t_c(IM_t_c < IM_max); % take only the results with IM < IM_max
 eq_over = sum(IM_t_c >= IM_max);    % number of analyses reached IM_max without collapsing

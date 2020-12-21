@@ -1,5 +1,7 @@
 # Specify filepatterns you want git to ignore.
 **/WinterSchool/00_WiP
+**/2020/00_WiP
+**/2020/02_FRAG/MATLAB/backup
 
 # Specify extension file you want git to ignore.
 *.asv
